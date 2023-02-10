@@ -112,6 +112,9 @@ input {
     width: 100%;
     padding: 0.4em;
     border-radius: 0.4em;
+    transition: 0.2s all ease;
+    border: none;
+    outline: 0.1em solid #000000;
 }
 
 h1 {
@@ -145,4 +148,7 @@ h1 {
 .error-message {
     font-size: 0.8em;
     color: red;
+}
+input:focus{
+    outline: 0.2em solid #000000;
 }
