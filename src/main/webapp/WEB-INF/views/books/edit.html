@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить данные о книге</title>
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/styles/css/bookedit.css}">
+</head>
+
+<body>
+<header>
+  <navbar>
+    <ul class="nav">
+      <a href="/people">Все пользователи</a>
+      <a href="/books">Все книги</a>
+    </ul>
+  </navbar>
+</header>
+<div class="wrapper">
+  <div class="container">
+    <form id="edit" class="list form" th:method="PATCH" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
+      <label for="title">Введите название книги:</label>
+      <input type="text" th:field="*{title}" id="title"/>
+      <div th:if="${#fields.hasErrors()}" th:errors="*{title}">Title error</div>
+
+      <label for="author">Введите автора:</label>
+      <input type="text" th:field="*{author}" id="author"/>
+      <div th:if="${#fields.hasErrors()}" th:errors="*{author}">Author error</div>
+
+      <label for="year">Ввдедите год:</label>
+      <input type="text" th:field="*{year}" id="year"/>
+      <div style="color: red" th:if="${#fields.hasErrors()}" th:errors="*{year}">Year error</div>
+    </form>
+
+    <button form="edit" class="button" type="submit">Редактировать!</button>
+
+  </div>
+</div>
+</body>
+</html>

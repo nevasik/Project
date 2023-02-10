@@ -1,0 +1,14 @@
+@import "global.css";
+
+.user-books{
+    display: flex;
+    gap: 1.5em;
+    align-items: start;
+    justify-content: space-between;
+}
+
+a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

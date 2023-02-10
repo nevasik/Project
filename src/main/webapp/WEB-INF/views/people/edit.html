@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать профиль</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/styles/css/edit.css}">
+</head>
+
+<body>
+<header>
+    <navbar>
+        <ul class="nav">
+            <a href="/people">Все пользователи</a>
+            <a href="/books">Все книги</a>
+        </ul>
+    </navbar>
+</header>
+<div class="wrapper">
+    <div class="container">
+        <form id="edit" class="list form" th:method="PATCH" th:action="@{/people/{id}(id=${peopleEdit.getId()})}" th:object="${peopleEdit}">
+            <label for="name">Введите ФИО:</label>
+            <input type="text" th:field="*{full_name}" id="name"/>
+            <label for="age">Введите год рождения:</label>
+            <input type="text" th:field="*{year_of_birth}" id="age"/>
+        </form>
+        <button form="edit" class="button" type="submit">Редактировать!</button>
+    </div>
+</div>
+</body>
+</html>

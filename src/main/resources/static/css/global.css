@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    height: 100vh;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3em;
+    border-bottom: 0.1em solid #000000;
+    padding: 0 2em;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.nav {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    border: 0.1em solid #000000;
+    padding: 2em;
+    border-radius: 0.3em 0 0 0.3em;
+    max-width: 80%;
+    min-width: 320px;
+    justify-content: center;
+}
+
+.button {
+    padding: 0.5em;
+    background: transparent;
+    text-decoration: none;
+    border: 1px solid #000000;
+    transition: 0.5s all ease;
+    color: #000000;
+    font-size: inherit;
+}
+
+.button:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    gap: 1em;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+    width: 100%;
+    position: relative;
+    white-space: nowrap;
+}
+
+a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0.01em;
+    height: 0.1em;
+    background: grey;
+    transition: 0.3s all ease;
+}
+
+a:hover {
+    color: gray;
+}
+
+a:hover:after {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: 0.4em;
+    border-radius: 0.4em;
+}
+
+h1 {
+    margin-bottom: 0.5em;
+    font-size: 1.5em;
+    word-break: break-word;
+}
+
+.form {
+    min-width: 300px;
+}
+
+#edit-button {
+    color: teal;
+}
+
+#edit-button:hover {
+    color: white;
+    background: teal;
+}
+
+#delete-button {
+    color: red;
+}
+
+#delete-button:hover {
+    background: darkred;
+    color: white;
+}
+
+.error-message {
+    font-size: 0.8em;
+    color: red;
+}

@@ -1,0 +1,7 @@
+# Project exclude paths
+target/
+.idea/
+src/main/resources/database.properties
+src/main/resources/database.origin
+src/main/resources/logback.xml
+pom.xml
