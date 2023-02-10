@@ -23,7 +23,11 @@
             <label for="age">Введите год рождения:</label>
             <input type="text" th:field="*{year_of_birth}" id="age"/>
         </form>
-        <button form="edit" class="button" type="submit">Редактировать!</button>
+        <div class="button-container">
+            <button form="edit" class="button" type="submit">Редактировать!</button>
+            <a class="button" href="/people/" type="submit">Назад</a>
+        </div>
+
     </div>
 </div>
 </body>
