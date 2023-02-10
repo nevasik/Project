@@ -9,8 +9,8 @@
 <header>
     <navbar>
         <ul class="nav">
-            <a class="nav-link" href="/people">Все пользователи</a>
-            <a class="nav-link" href="/books">Все книги</a>
+            <a class="button" href="/people">Все пользователи</a>
+            <a class="button" href="/books">Все книги</a>
         </ul>
     </navbar>
 </header>
@@ -18,7 +18,7 @@
     <div class="container">
         <ol class="list">
             <li th:each="book : ${books}">
-                <a class="nav-link" th:href="@{/books/{id}(id=${book.getId()})}"
+                <a class="list-link" th:href="@{/books/{id}(id=${book.getId()})}"
                    th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">Information a Book</a>
             </li>
         </ol>

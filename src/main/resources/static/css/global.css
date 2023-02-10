@@ -90,7 +90,7 @@ a {
     white-space: nowrap;
 }
 
-.nav-link:after {
+.list-link:after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -101,11 +101,11 @@ a {
     transition: 0.3s all ease;
 }
 
-a:hover {
+.list-link:hover {
     color: gray;
 }
 
-.nav-link:hover:after {
+.list-link:hover:after {
     width: 100%;
 }
 
