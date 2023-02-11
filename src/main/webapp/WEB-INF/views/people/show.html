@@ -10,8 +10,8 @@
 <header>
     <navbar>
         <ul class="nav">
-            <a class="nav-link" href="/people">Все пользователи</a>
-            <a class="nav-link" href="/books">Все книги</a>
+            <a class="button" href="/people">Все пользователи</a>
+            <a class="button" href="/books">Все книги</a>
         </ul>
     </navbar>
 </header>
@@ -30,7 +30,7 @@
             </ul>
         </div>
         <div class="button-container">
-            <a class="button" href="/people">Перейти на главную</a>
+            <a class="button" href="/people">Назад</a>
             <div class="buttons">
                 <a th:href="@{/people/{id}/edit(id=${person.getId()})}" id="edit-button" class="button" type="submit">Редактировать</a>
                 <form id='delete' th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
