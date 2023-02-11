@@ -20,8 +20,13 @@
         <form id="edit" class="list form" th:method="PATCH" th:action="@{/people/{id}(id=${peopleEdit.getId()})}" th:object="${peopleEdit}">
             <label for="name">Введите ФИО:</label>
             <input type="text" th:field="*{full_name}" id="name"/>
+
             <label for="age">Введите год рождения:</label>
             <input type="text" th:field="*{year_of_birth}" id="age"/>
+
+            <label for="avatar">Прикрепите фотографию:</label>
+            <input type="file" th:field="*{avatar}" id="avatar"/>
+
         </form>
         <button form="edit" class="button" type="submit">Редактировать!</button>
     </div>

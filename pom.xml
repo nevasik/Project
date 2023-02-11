@@ -5,6 +5,18 @@
   <groupId>org.example</groupId>
   <artifactId>CrudApplication1</artifactId>
   <packaging>war</packaging>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
   <version>1.0-SNAPSHOT</version>
 
   <name>CrudApplication1 Maven Webapp</name>
@@ -103,19 +115,5 @@
     </dependency>
 
   </dependencies>
-
-  <build>
-    <finalName>CrudApplication1</finalName>
-      <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <configuration>
-                  <source>8</source>
-                  <target>8</target>
-              </configuration>
-          </plugin>
-      </plugins>
-  </build>
 
 </project>

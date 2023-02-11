@@ -1,11 +1,13 @@
-package ru.poplaukhin.spring.models;
+package ru.poplaukhin.spring.dto;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-public class Person {
+public class PersonDto {
     private int id;
     @NotEmpty(message = "Имя не должно быть пустым")
     @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
@@ -13,16 +15,7 @@ public class Person {
     @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900 ")
     @Max(value = 2020, message = "Год рождения должен быть меньше, чем 2020")
     private int year_of_birth;
-    private String avatar;
-
-    public Person(int id, String full_name, int year_of_birth) {
-        this.id = id;
-        this.full_name = full_name;
-        this.year_of_birth = year_of_birth;
-    }
-
-    public Person() {
-    }
+    private MultipartFile avatar;
 
     public int getId() {
         return id;
@@ -48,11 +41,11 @@ public class Person {
         this.year_of_birth = year_of_birth;
     }
 
-    public String getAvatar() {
+    public MultipartFile getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(MultipartFile avatar) {
         this.avatar = avatar;
     }
 }

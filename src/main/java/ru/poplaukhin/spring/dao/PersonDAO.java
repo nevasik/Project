@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.poplaukhin.spring.models.Book;
 import ru.poplaukhin.spring.models.Person;
+
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,11 +29,12 @@ public class PersonDAO {
     }
 
     public void save(Person person) {
-        jdbcTemplate.update("INSERT INTO Person(full_name, year_of_birth) VALUES (?, ?)", person.getFull_name(), person.getYear_of_birth());
+        String image = Base64.getEncoder().encodeToString(person.getAvatar().getBytes());
+        jdbcTemplate.update("INSERT INTO Person(full_name, year_of_birth, avatar) VALUES (?, ?, ?)", person.getFull_name(), person.getYear_of_birth(), image);
     }
 
     public void update(int id, Person person) {
-        jdbcTemplate.update("UPDATE Person SET full_name=?, year_of_birth=? WHERE id=?", person.getFull_name(), person.getYear_of_birth(), id);
+        jdbcTemplate.update("UPDATE Person SET full_name=?, year_of_birth=?, avatar=? WHERE id=?", person.getFull_name(), person.getYear_of_birth(), person.getAvatar(), id);
     }
 
     public void delete(int id) {

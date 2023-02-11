@@ -1,11 +1,13 @@
 package ru.poplaukhin.spring.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.poplaukhin.spring.dao.PersonDAO;
+import ru.poplaukhin.spring.dto.PersonDto;
 import ru.poplaukhin.spring.models.Person;
 import ru.poplaukhin.spring.util.PersonValidator;
 import javax.validation.Valid;
@@ -38,11 +40,11 @@ public class PersonController {
     }
 
     @GetMapping("/new")
-    public String show(@ModelAttribute("person") Person person) {
+    public String show(@ModelAttribute("person") PersonDto person) {
         return "people/new";
     }
 
-    @PostMapping()
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
         personValidator.validate(person, bindingResult);
 
