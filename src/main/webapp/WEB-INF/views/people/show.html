@@ -18,7 +18,7 @@
 <div class="wrapper">
     <div class="container">
         <h1 th:text="${person.getFull_name() + ', ' + person.getYear_of_birth()}">Date</h1>
-        <img th:src="${'data:image/jpeg;charset=utf-8;base64,' + person.getAvatar()}" alt="">
+        <img th:src="${'data:image/jpeg;charset=utf-8;base64,' + person.getAvatar()}" align=”right” width="200" height="222" alt="">
 
         <div th:if="${books.isEmpty()}">
             <p>Человек пока не взял ни одной книги</p>
@@ -41,5 +41,4 @@
     </div>
 </div>
 </body>
-
 </html>

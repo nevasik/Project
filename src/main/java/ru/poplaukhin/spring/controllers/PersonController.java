@@ -11,6 +11,7 @@ import ru.poplaukhin.spring.dto.PersonDto;
 import ru.poplaukhin.spring.models.Person;
 import ru.poplaukhin.spring.util.PersonValidator;
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/people")
@@ -45,7 +46,7 @@ public class PersonController {
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+    public String create(@Valid @ModelAttribute("person") PersonDto person, BindingResult bindingResult) throws IOException {
         personValidator.validate(person, bindingResult);
 
         if (bindingResult.hasErrors()) {

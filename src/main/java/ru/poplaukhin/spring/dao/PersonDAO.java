@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import ru.poplaukhin.spring.dto.PersonDto;
 import ru.poplaukhin.spring.models.Book;
 import ru.poplaukhin.spring.models.Person;
-
+import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +29,7 @@ public class PersonDAO {
         return jdbcTemplate.query("SELECT * FROM Person WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class)).stream().findAny().orElse(null);
     }
 
-    public void save(Person person) {
+    public void save(PersonDto person) throws IOException {
         String image = Base64.getEncoder().encodeToString(person.getAvatar().getBytes());
         jdbcTemplate.update("INSERT INTO Person(full_name, year_of_birth, avatar) VALUES (?, ?, ?)", person.getFull_name(), person.getYear_of_birth(), image);
     }

@@ -9,6 +9,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -89,5 +91,13 @@ public class SpringConfig implements WebMvcConfigurer {
                 .addResourceHandler("/show/styles/css/**")
                 .addResourceLocations("classpath:/static/css/");
 
+    }
+    @Bean
+    public MultipartResolver multipartResolver(){
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+        commonsMultipartResolver.setDefaultEncoding("utf-8");
+        commonsMultipartResolver.setMaxUploadSize(20000000);
+        commonsMultipartResolver.setResolveLazily(false);
+        return commonsMultipartResolver;
     }
 }

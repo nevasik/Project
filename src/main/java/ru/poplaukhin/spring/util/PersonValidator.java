@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import ru.poplaukhin.spring.dao.PersonDAO;
+import ru.poplaukhin.spring.dto.PersonDto;
 import ru.poplaukhin.spring.models.Person;
 
 @Component
@@ -18,12 +19,12 @@ public class PersonValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return Person.class.equals(aClass);
+        return PersonDto.class.equals(aClass);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        Person person = (Person) o;
+        PersonDto person = (PersonDto) o;
 
         if (personDAO.getPersonByFullName(person.getFull_name()).isPresent()) {
             errors.rejectValue("fullName", "", "Человек с таким ФИО уже существует");
