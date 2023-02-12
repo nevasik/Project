@@ -9,8 +9,8 @@
 <header>
     <navbar>
         <ul class="nav">
-            <a class="button" href="/people">Все пользователи</a>
-            <a class="button" href="/books">Все книги</a>
+            <a class="button" th:href="@{/people}">Все пользователи</a>
+            <a class="button" th:href="@{/books}">Все книги</a>
         </ul>
     </navbar>
 </header>
@@ -22,7 +22,7 @@
                    th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">Information a Book</a>
             </li>
         </ol>
-        <a class="button" href="/books/new">Добавить новую книгу</a>
+        <a class="button" th:href="@{/books/new}">Добавить новую книгу</a>
     </div>
 </div>
 </body>

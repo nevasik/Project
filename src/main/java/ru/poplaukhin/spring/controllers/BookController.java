@@ -1,15 +1,18 @@
 package ru.poplaukhin.spring.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.poplaukhin.spring.dao.BookDAO;
 import ru.poplaukhin.spring.dao.PersonDAO;
+import ru.poplaukhin.spring.dto.BookDto;
 import ru.poplaukhin.spring.models.Book;
 import ru.poplaukhin.spring.models.Person;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.Optional;
 
 @Controller
@@ -28,7 +31,7 @@ public class BookController {
     public String index(Model model) {
         model.addAttribute("books", bookDAO.index());
 
-        return "books/index";
+        return "books/fullBook";
     }
 
     @GetMapping("/{id}")
@@ -46,13 +49,13 @@ public class BookController {
     }
 
     @GetMapping("/new")
-    public String addPerson(@ModelAttribute("book") Book book) {
+    public String addPerson(@ModelAttribute("book") BookDto book) {
         return "books/new";
     }
 
-    @PostMapping()
-    public String newPerson(@ModelAttribute("book") @Valid Book book,
-                            BindingResult bindingResult) {
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String newPerson(@Valid @ModelAttribute("book") BookDto book,
+                            BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
             return "books/new";
         }

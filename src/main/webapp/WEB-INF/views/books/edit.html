@@ -10,8 +10,8 @@
 <header>
   <navbar>
     <ul class="nav">
-      <a class="button" href="/people">Все пользователи</a>
-      <a class="button" href="/books">Все книги</a>
+      <a class="button" th:href="@{/people}">Все пользователи</a>
+      <a class="button" th:href="@{/books}">Все книги</a>
     </ul>
   </navbar>
 </header>
@@ -29,6 +29,9 @@
       <label for="year">Ввдедите год:</label>
       <input type="text" th:field="*{year}" id="year"/>
       <p class="error-message" th:if="${#fields.hasErrors()}" th:errors="*{year}">Year error</p>
+
+      <label for="avatar">Прикрепите фотографию:</label>
+      <input type="file" th:field="*{avatar}" id="avatar"/>
     </form>
 
     <button form="edit" class="button" type="submit">Редактировать!</button>

@@ -9,17 +9,19 @@
 <header>
     <navbar>
         <ul class="nav">
-            <a class="button" href="/people">Все пользователи</a>
-            <a class="button" href="/books">Все книги</a>
+            <a class="button" th:href="@{/people}">Все пользователи</a>
+            <a class="button" th:href="@{/books}">Все книги</a>
         </ul>
     </navbar>
 </header>
 <div class="wrapper">
     <div class="container">
             <ol class="list">
-                <li th:each="person : ${fullPeople}"><a class="list-link" th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getFull_name() + ', ' + person.getYear_of_birth()}"></a></li>
+                <li th:each="person : ${fullPeople}">
+                    <a class="list-link" th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getFull_name() + ', ' + person.getYear_of_birth()}"></a>
+                </li>
             </ol>
-        <a class="button" href="/people/new">Добавить нового человека</a>
+        <a class="button" th:href="@{/people/new}">Добавить нового человека</a>
     </div>
 </div>
 </body>

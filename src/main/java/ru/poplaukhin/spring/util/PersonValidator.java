@@ -6,7 +6,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import ru.poplaukhin.spring.dao.PersonDAO;
 import ru.poplaukhin.spring.dto.PersonDto;
-import ru.poplaukhin.spring.models.Person;
 
 @Component
 public class PersonValidator implements Validator {

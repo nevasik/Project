@@ -9,14 +9,15 @@
 <header>
     <navbar>
         <ul class="nav">
-            <a class="button" href="/people">Все пользователи</a>
-            <a class="button" href="/books">Все книги</a>
+            <a class="button" th:href="@{/people}">Все пользователи</a>
+            <a class="button" th:href="@{/books}">Все книги</a>
         </ul>
     </navbar>
 </header>
 <div class="wrapper">
     <div class="container">
         <h1 th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">Date</h1>
+        <img th:src="${'data:image/jpeg;charset=utf-8;base64,' + book.getAvatar()}" align=”right” width="200" height="222" alt="">
         <div class="container" th:if="${owner}">
             <span>Книга сейчас у: <b th:text="${owner.getFull_name()}"></b> </span>
             <form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.getId()})}">
@@ -37,7 +38,7 @@
         </div>
 
         <div class="button-container">
-            <a href="/books/" class="button" type="submit">Назад</a>
+            <a th:href="@{/books/}" class="button" type="submit">Назад</a>
             <div class="buttons">
                 <a id="edit-button" th:href="@{/books/{id}/edit(id=${book.getId()})}" class="button" type="submit">Редактировать</a>
                 <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
@@ -45,7 +46,6 @@
                 </form>
             </div>
         </div>
-
     </div>
 </div>
 

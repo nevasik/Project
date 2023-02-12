@@ -9,8 +9,8 @@
 <header>
     <navbar>
         <ul class="nav">
-            <a class="button" href="/people">Все пользователи</a>
-            <a class="button" href="/books">Все книги</a>
+            <a class="button" th:href="@{/people}">Все пользователи</a>
+            <a class="button" th:href="@{/books}">Все книги</a>
         </ul>
     </navbar>
 </header>
@@ -32,7 +32,7 @@
 
         <div class="button-container">
             <button form="new" class="button" type="submit">Создать!</button>
-            <a class="button" href="/people/">Назад</a>
+            <a class="button" th:href="@{/people/}">Назад</a>
         </div>
     </div>
 </div>

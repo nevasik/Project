@@ -1,10 +1,11 @@
-package ru.poplaukhin.spring.models;
+package ru.poplaukhin.spring.dto;
 
+import org.springframework.web.multipart.MultipartFile;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-public class Book {
+public class BookDto {
     private int id;
     @NotEmpty(message = "Название книги не должно быть пустым")
     @Size(min = 2, max = 100, message = "Название книги должно быть от 2 до 100 символов длиной")
@@ -14,16 +15,8 @@ public class Book {
     private String author;
     @Min(value = 1500, message = "Год должен быть больше, чем 1500")
     private int year;
-    private String avatar;
 
-    public Book() {
-    }
-
-    public Book(String title, String author, int year) {
-        this.title = title;
-        this.author = author;
-        this.year = year;
-    }
+    private MultipartFile avatar;
 
     public int getId() {
         return id;
@@ -57,11 +50,11 @@ public class Book {
         this.year = year;
     }
 
-    public String getAvatar() {
+    public MultipartFile getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(MultipartFile avatar) {
         this.avatar = avatar;
     }
 }
