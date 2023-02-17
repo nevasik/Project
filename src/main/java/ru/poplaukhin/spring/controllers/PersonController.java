@@ -8,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.poplaukhin.spring.dao.PersonDAO;
 import ru.poplaukhin.spring.dto.PersonDto;
-import ru.poplaukhin.spring.models.Person;
 import ru.poplaukhin.spring.util.PersonValidator;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -65,9 +64,9 @@ public class PersonController {
         return "people/edit";
     }
 
-    @PatchMapping("/{id}")
-    public String updatePerson(@PathVariable("id") int id, @ModelAttribute("person") @Valid Person person,
-                               BindingResult bindingResult) {
+    @PostMapping("/{id}")
+    public String updateAvatar(@PathVariable("id") int id, @ModelAttribute("person") @Valid PersonDto person,
+                               BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
             return "people/edit";
         }

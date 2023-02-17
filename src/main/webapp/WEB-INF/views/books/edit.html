@@ -17,7 +17,7 @@
 </header>
 <div class="wrapper">
   <div class="container">
-    <form id="edit" class="list form" th:method="PATCH" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
+    <form id="edit" class="list form" th:method="POST" enctype="multipart/form-data" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
       <label for="title">Введите название книги:</label>
       <input type="text" th:field="*{title}" id="title"/>
       <p class="error-message" th:if="${#fields.hasErrors()}" th:errors="*{title}">Title error</p>
@@ -35,8 +35,8 @@
     </form>
 
     <button form="edit" class="button" type="submit">Редактировать!</button>
-
   </div>
+
 </div>
 </body>
 </html>

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.poplaukhin.spring.dao.BookDAO;
 import ru.poplaukhin.spring.dao.PersonDAO;
 import ru.poplaukhin.spring.dto.BookDto;
-import ru.poplaukhin.spring.models.Book;
 import ru.poplaukhin.spring.models.Person;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -71,9 +70,9 @@ public class BookController {
         return "books/edit";
     }
 
-    @PatchMapping("/{id}")
-    public String updatePerson(@PathVariable("id") int id, @ModelAttribute("book") @Valid Book book,
-                               BindingResult bindingResult) {
+    @PostMapping("/{id}")
+    public String updateAvatar(@PathVariable("id") int id, @ModelAttribute("book") @Valid BookDto book,
+                               BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
             return "books/edit";
         }
