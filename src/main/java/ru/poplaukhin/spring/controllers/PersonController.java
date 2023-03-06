@@ -25,22 +25,22 @@ public class PersonController {
     }
 
     @GetMapping()
-    public String index(Model model) {
-        model.addAttribute("fullPeople", personDAO.fullPeople());
+    public String getAll(Model model) {
+        model.addAttribute("fullPeople", personDAO.getAll());
 
         return "people/fullPeople";
     }
 
     @GetMapping("/{id}")
-    public String personId(@PathVariable("id") int id, Model model) {
-        model.addAttribute("person", personDAO.show(id));
+    public String getById(@PathVariable("id") int id, Model model) {
+        model.addAttribute("person", personDAO.getById(id));
         model.addAttribute("books",  personDAO.getBookByPersonId(id));
 
         return "people/show";
     }
 
     @GetMapping("/new")
-    public String show(@ModelAttribute("person") PersonDto person) {
+    public String add(@ModelAttribute("person") PersonDto person) {
         return "people/new";
     }
 
@@ -59,13 +59,13 @@ public class PersonController {
 
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") int id, Model model) {
-        model.addAttribute("peopleEdit", personDAO.show(id));
+        model.addAttribute("peopleEdit", personDAO.getById(id));
 
         return "people/edit";
     }
 
     @PostMapping("/{id}")
-    public String updateAvatar(@PathVariable("id") int id, @ModelAttribute("person") @Valid PersonDto person,
+    public String update(@PathVariable("id") int id, @ModelAttribute("person") @Valid PersonDto person,
                                BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
             return "people/edit";

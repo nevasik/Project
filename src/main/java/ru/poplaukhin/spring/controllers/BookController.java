@@ -27,33 +27,33 @@ public class BookController {
     }
 
     @GetMapping()
-    public String index(Model model) {
-        model.addAttribute("books", bookDAO.index());
+    public String getAll(Model model) {
+        model.addAttribute("books", bookDAO.getAll());
 
         return "books/fullBook";
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model, @ModelAttribute("person") Person person) {
-        model.addAttribute("book", bookDAO.show(id));
+    public String getById(@PathVariable("id") int id, Model model, @ModelAttribute("person") Person person) {
+        model.addAttribute("book", bookDAO.getById(id));
         Optional<Person> bookOwner = bookDAO.getBookOwner(id);
 
         if (bookOwner.isPresent()) {
             model.addAttribute("owner", bookOwner.get());
         } else {
-            model.addAttribute("people", personDAO.fullPeople());
+            model.addAttribute("people", personDAO.getAll());
         }
 
         return "books/show";
     }
 
     @GetMapping("/new")
-    public String addPerson(@ModelAttribute("book") BookDto book) {
+    public String add(@ModelAttribute("book") BookDto book) {
         return "books/new";
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String newPerson(@Valid @ModelAttribute("book") BookDto book,
+    public String save(@Valid @ModelAttribute("book") BookDto book,
                             BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
             return "books/new";
@@ -65,13 +65,13 @@ public class BookController {
     }
 
     @GetMapping("/{id}/edit")
-    public String editPerson(@PathVariable("id") int id, Model model) {
-        model.addAttribute("book", bookDAO.show(id));
+    public String edit(@PathVariable("id") int id, Model model) {
+        model.addAttribute("book", bookDAO.getById(id));
         return "books/edit";
     }
 
     @PostMapping("/{id}")
-    public String updateAvatar(@PathVariable("id") int id, @ModelAttribute("book") @Valid BookDto book,
+    public String update(@PathVariable("id") int id, @ModelAttribute("book") @Valid BookDto book,
                                BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {
             return "books/edit";
@@ -83,7 +83,7 @@ public class BookController {
     }
 
     @DeleteMapping("{id}")
-    public String deletePerson(@PathVariable("id") int id) {
+    public String delete(@PathVariable("id") int id) {
         bookDAO.delete(id);
 
         return "redirect:/books";
