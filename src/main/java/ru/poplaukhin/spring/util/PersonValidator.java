@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import ru.poplaukhin.spring.dao.PersonDAO;
-import ru.poplaukhin.spring.dto.PersonDto;
 
 @Component
 public class PersonValidator implements Validator {
